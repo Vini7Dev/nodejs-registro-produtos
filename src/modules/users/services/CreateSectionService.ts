@@ -1,5 +1,6 @@
 import { sign } from 'jsonwebtoken';
 import { compare } from 'bcrypt';
+import { classToClass } from 'class-transformer';
 
 import UsersRepository from '../typeorm/repositories/UsersRepository';
 import User from '../typeorm/entities/User';
@@ -43,7 +44,9 @@ class CreateSectionService {
       expiresIn,
     });
 
-    return { user, token };
+    const userWithoutPassword = classToClass(user);
+
+    return { user: userWithoutPassword, token };
   }
 }
 

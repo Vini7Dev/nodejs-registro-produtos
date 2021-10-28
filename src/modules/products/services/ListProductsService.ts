@@ -1,5 +1,7 @@
-import Product from "../typeorm/entities/Product";
-import ProductsRepository from "../typeorm/repositories/ProductsRepository";
+import { classToClass } from 'class-transformer';
+
+import Product from '../typeorm/entities/Product';
+import ProductsRepository from '../typeorm/repositories/ProductsRepository';
 
 class ListProductsService {
   private productsRepository: ProductsRepository;
@@ -11,7 +13,9 @@ class ListProductsService {
   public async execute(): Promise<Product[]> {
     const productsList = await this.productsRepository.list();
 
-    return productsList;
+    const productsListClassTransformed = classToClass(productsList);
+
+    return productsListClassTransformed;
   }
 }
 

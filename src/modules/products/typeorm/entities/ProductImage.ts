@@ -1,4 +1,5 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Expose } from 'class-transformer';
 import { v4 as uuidv4 } from 'uuid';
 
 import Product from './Product';
@@ -20,6 +21,11 @@ class ProductImage {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @Expose({name: 'image_url'})
+  public getImageUrl(): string {
+    return `http://localhost:3333/files/${this.file_name}`;
+  }
 
   constructor() {
     if(!this.id) {

@@ -1,4 +1,5 @@
 import { hash } from 'bcrypt';
+import { classToClass } from 'class-transformer';
 
 import UsersRepository from '../typeorm/repositories/UsersRepository';
 import User from '../typeorm/entities/User';
@@ -36,9 +37,9 @@ class CreateUserService {
       password: passwordHash,
     });
 
-    delete createdUser.password;
+    const userWithoutPassword = classToClass(createdUser);
 
-    return createdUser;
+    return userWithoutPassword;
   }
 }
 
