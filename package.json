@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-registro-produtos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Vinicius7Dev/nodejs-registro-produtos",
+  "author": "Vinícius Gabriel <viniciusgabriel.dev@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "dev": "ts-node-dev --ignore-watch node_modules src/server.ts"
+  }
+}
