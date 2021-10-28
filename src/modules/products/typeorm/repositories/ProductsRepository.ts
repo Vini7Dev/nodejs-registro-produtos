@@ -12,7 +12,7 @@ class ProductsRepository {
 
   public async findById(id: string): Promise<Product> {
     const productsList = await this.repository.findOne(id, {
-      relations: ['user', 'category'],
+      relations: ['user', 'category', 'product_images'],
     });
 
     return productsList;
@@ -20,7 +20,7 @@ class ProductsRepository {
 
   public async list(): Promise<Product[]> {
     const productsList = await this.repository.find({
-      relations: ['user', 'category'],
+      relations: ['user', 'category', 'product_images'],
     });
 
     return productsList;

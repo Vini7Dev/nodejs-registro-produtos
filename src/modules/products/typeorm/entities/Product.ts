@@ -1,8 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm';
 
 import User from '../../../users/typeorm/entities/User';
 import Category from './Category';
+import ProductImage from './ProductImage';
 
 @Entity('products')
 class Product {
@@ -31,6 +32,9 @@ class Product {
   @ManyToOne(() => Category)
   @JoinColumn({ name: 'category_id' })
   category: Category;
+
+  @OneToMany(() => ProductImage, product_image => product_image.product)
+  product_images: ProductImage[];
 
   @CreateDateColumn()
   created_at: Date;
