@@ -3,11 +3,11 @@ import fs from 'fs';
 
 import uploadConfig from '../config/uploadConfig';
 
-const deleteFilesArray = async (filesName: string[]) => {
-  const { directory } = uploadConfig;
+const deleteFilesArrayFromTmp = async (filesName: string[]) => {
+  const { tmpFolder } = uploadConfig;
 
   for(let i in filesName) {
-    const fileDirectoryName = resolve(`${directory}`, filesName[i]);
+    const fileDirectoryName = resolve(`${tmpFolder}`, filesName[i]);
 
     try {
       await fs.promises.stat(fileDirectoryName);
@@ -19,4 +19,4 @@ const deleteFilesArray = async (filesName: string[]) => {
   }
 };
 
-export default deleteFilesArray;
+export default deleteFilesArrayFromTmp;
