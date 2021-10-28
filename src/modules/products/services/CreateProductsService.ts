@@ -5,6 +5,7 @@ import UsersRepository from '../../users/typeorm/repositories/UsersRepository';
 import CategoriesRepository from '../typeorm/repositories/CategoriesRepository';
 import ProductsRepository from '../typeorm/repositories/ProductsRepository';
 import ProductImagesRepository from '../typeorm/repositories/ProductImagesRepository';
+import deleteFilesArray from '../../../utils/deleteFilesArray';
 
 interface IRequest {
   name: string;
@@ -40,8 +41,12 @@ class CreateProductsService {
     user_id,
   }: IRequest): Promise<Product> {
     if(images_name.length < 1) {
+      await deleteFilesArray(images_name);
+
       throw new AppError('You need to add at least 1 image.');
     } else if(images_name.length > 5) {
+      await deleteFilesArray(images_name);
+      
       throw new AppError('You are not allowed to add more than 5 images for each product.');
     }
 
