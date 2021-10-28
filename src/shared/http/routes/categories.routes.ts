@@ -10,7 +10,7 @@ const categoriesRoutes = Router();
 categoriesRoutes.post(
   '/',
   ensureAuthenticated,
-  categoriesController.create
+  categoriesController.create,
 );
 
 export default categoriesRoutes;

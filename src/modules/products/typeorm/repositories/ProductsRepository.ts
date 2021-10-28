@@ -10,6 +10,14 @@ class ProductsRepository {
     this.repository = getRepository(Product);
   }
 
+  public async list(): Promise<Product[]> {
+    const productsList = await this.repository.find({
+      relations: ['user', 'category'],
+    });
+
+    return productsList;
+  }
+
   public async create({
     name,
     description,

@@ -7,10 +7,16 @@ const productsController = new ProductsController();
 
 const productsRoutes = Router();
 
+productsRoutes.get(
+  '/',
+  ensureAuthenticated,
+  productsController.index,
+);
+
 productsRoutes.post(
   '/',
   ensureAuthenticated,
-  productsController.create
+  productsController.create,
 );
 
 export default productsRoutes;
