@@ -11,21 +11,21 @@ class UsersRepository {
   }
 
   public async findByEmail(email: string): Promise<User | undefined> {
-    const userFinded = await this.repository.findOne({ email });
+    const userFound = await this.repository.findOne({ email });
 
-    return userFinded;
+    return userFound;
   }
 
   public async create({ name, email, password }: ICreateUserDTO): Promise<User> {
-    const userCreated = this.repository.create({
+    const createdUser = this.repository.create({
       name,
       email,
       password,
     });
 
-    await this.repository.save(userCreated);
+    await this.repository.save(createdUser);
 
-    return userCreated;
+    return createdUser;
   }
 }
 

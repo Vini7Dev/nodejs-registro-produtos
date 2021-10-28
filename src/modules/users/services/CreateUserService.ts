@@ -30,15 +30,15 @@ class CreateUserService {
 
     const passwordHash = await hash(password, 8);
 
-    const userCreated = await this.usersRepository.create({
+    const createdUser = await this.usersRepository.create({
       name,
       email,
       password: passwordHash,
     });
 
-    delete userCreated.password;
+    delete createdUser.password;
 
-    return userCreated;
+    return createdUser;
   }
 }
 
