@@ -16,6 +16,12 @@ class CategoriesRepository {
     return categoryFound;
   }
 
+  public async findByName(name: string): Promise<Category | undefined> {
+    const categoryFound = await this.repository.findOne({ name });
+
+    return categoryFound;
+  }
+
   public async create({ name, description }: ICreateCategoryDTO): Promise<Category> {
     const createdCategory = this.repository.create({
       name,

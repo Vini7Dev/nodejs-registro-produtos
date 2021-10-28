@@ -13,6 +13,7 @@ export default class CreateCategories1635449641955 implements MigrationInterface
         {
           name: 'name',
           type: 'varchar',
+          isUnique: true,
         },
         {
           name: 'description',
