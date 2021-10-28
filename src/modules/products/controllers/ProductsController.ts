@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import CreateProductsService from '../services/CreateProductsService';
+import DeleteProductService from '../services/DeleteProductService';
 import ListProductsService from '../services/ListProductsService';
 
 class ProductsController {
@@ -28,6 +29,16 @@ class ProductsController {
     });
 
     return response.status(201).json(createdProduct);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const deleteProductService = new DeleteProductService();
+
+    await deleteProductService.execute(id);
+
+    return response.status(204).send();
   }
 }
 

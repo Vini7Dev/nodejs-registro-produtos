@@ -10,6 +10,14 @@ class ProductsRepository {
     this.repository = getRepository(Product);
   }
 
+  public async findById(id: string): Promise<Product> {
+    const productsList = await this.repository.findOne(id, {
+      relations: ['user', 'category'],
+    });
+
+    return productsList;
+  }
+
   public async list(): Promise<Product[]> {
     const productsList = await this.repository.find({
       relations: ['user', 'category'],
@@ -36,6 +44,10 @@ class ProductsRepository {
     await this.repository.save(createdProduct);
 
     return createdProduct;
+  }
+
+  public async delete(id: string): Promise<void> {
+    await this.repository.delete(id);
   }
 }
 

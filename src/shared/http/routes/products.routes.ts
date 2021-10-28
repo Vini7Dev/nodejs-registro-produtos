@@ -19,4 +19,10 @@ productsRoutes.post(
   productsController.create,
 );
 
+productsRoutes.delete(
+  '/:id',
+  ensureAuthenticated,
+  productsController.delete,
+);
+
 export default productsRoutes;
