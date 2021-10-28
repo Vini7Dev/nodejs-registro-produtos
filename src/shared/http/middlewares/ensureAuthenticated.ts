@@ -22,7 +22,9 @@ const ensureAuthenticated = async (request: Request, response: Response, next: N
 
     const { sub: user_id } = verify(token, secret) as ITokenPayload;
 
-    request.user_id = user_id;
+    request.user = {
+      id: user_id,
+    };
 
     next();
   } catch {

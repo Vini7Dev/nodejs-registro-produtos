@@ -26,7 +26,7 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "dev": "ts-node-dev --ignore-watch node_modules src/shared/http/server.ts",
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/shared/http/server.ts",
     "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
   }
 }

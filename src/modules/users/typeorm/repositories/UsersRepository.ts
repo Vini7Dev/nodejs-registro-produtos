@@ -10,6 +10,12 @@ class UsersRepository {
     this.repository = getRepository(User);
   }
 
+  public async findById(id: string): Promise<User | undefined> {
+    const userFound = await this.repository.findOne(id);
+
+    return userFound;
+  }
+
   public async findByEmail(email: string): Promise<User | undefined> {
     const userFound = await this.repository.findOne({ email });
 

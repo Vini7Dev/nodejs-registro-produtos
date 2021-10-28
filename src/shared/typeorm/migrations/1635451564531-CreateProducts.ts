@@ -39,6 +39,8 @@ export default class CreateProducts1635451564531 implements MigrationInterface {
           columnNames: ['category_id'],
           referencedColumnNames: ['id'],
           referencedTableName: 'categories',
+          onDelete: 'CASCADE',
+          onUpdate: 'CASCADE',
         }
       ],
     }));

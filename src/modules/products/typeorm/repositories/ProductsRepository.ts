@@ -15,12 +15,14 @@ class ProductsRepository {
     description,
     price,
     category_id,
+    user_id,
   }: ICreateProductDTO): Promise<Product> {
     const createdProduct = this.repository.create({
       name,
       description,
       price,
       category_id,
+      user_id,
     });
 
     await this.repository.save(createdProduct);
