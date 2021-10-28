@@ -7,44 +7,44 @@ import AppError from '../../../shared/errors/AppError';
 import authConfig from '../../../config/authConfig';
 
 interface IRequest {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 }
 
 interface IResponse {
-    user: User;
-    token: string;
+  user: User;
+  token: string;
 }
 
 class CreateSectionService {
-    private usersRepository: UsersRepository;
+  private usersRepository: UsersRepository;
 
-    constructor() {
-        this.usersRepository = new UsersRepository();
+  constructor() {
+    this.usersRepository = new UsersRepository();
+  }
+
+  public async execute({ email, password }: IRequest): Promise<IResponse> {
+    const user = await this.usersRepository.findByEmail(email);
+
+    if (!user) {
+      throw new AppError('Invalid credentials.', 401);
     }
 
-    public async execute({ email, password }: IRequest): Promise<IResponse> {
-        const user = await this.usersRepository.findByEmail(email);
+    const passwordMatch = await compare(password, user.password);
 
-        if(!user) {
-            throw new AppError('Invalid credentials.', 401);
-        }
-
-        const passwordMatch = await compare(password, user.password);
-
-        if(!passwordMatch) {
-            throw new AppError('Invalid credentials.', 401);
-        }
-
-        const { secret, expiresIn } = authConfig.jwt;
-
-        const token = sign({}, secret, {
-            subject: user.id,
-            expiresIn,
-        });
-
-        return { user, token };
+    if (!passwordMatch) {
+      throw new AppError('Invalid credentials.', 401);
     }
+
+    const { secret, expiresIn } = authConfig.jwt;
+
+    const token = sign({}, secret, {
+      subject: user.id,
+      expiresIn,
+    });
+
+    return { user, token };
+  }
 }
 
 export default CreateSectionService;
