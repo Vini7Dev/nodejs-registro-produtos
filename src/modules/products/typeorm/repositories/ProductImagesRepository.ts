@@ -10,6 +10,12 @@ class ProductImagesRepository {
     this.repository = getRepository(ProductImage);
   }
 
+  public async findByProductId(product_id: string): Promise<ProductImage[]> {
+    const productImagesList = await this.repository.find({ product_id });
+
+    return productImagesList;
+  }
+
   public async create({ file_name, product_id }: ICreateProductImageDTO): Promise<ProductImage> {
     const createdProductImage = this.repository.create({
       file_name,

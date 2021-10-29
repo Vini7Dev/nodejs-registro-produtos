@@ -2,6 +2,7 @@ import 'express-async-errors';
 import 'dotenv/config';
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
+import { errors } from 'celebrate';
 
 import '../typeorm';
 import routes from './routes';
@@ -18,10 +19,14 @@ app.use('/files', express.static(uploadConfig.tmpFolder));
 
 app.use(routes);
 
+app.use(errors());
+
 app.use((error: Error, request: Request, response: Response, next: NextFunction) => {
   if(error instanceof AppError) {
     return response.status(error.status).json({ error: error.message });
   } else {
+    console.log(error);
+
     return response.status(500).json({ error: 'Internal server error.' });
   }
 });
