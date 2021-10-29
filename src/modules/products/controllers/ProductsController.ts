@@ -8,13 +8,33 @@ interface IFileProps {
   filename: string;
 }
 
+interface IFilters {
+  product_name?: string;
+  min_price?: number;
+  max_price?: number;
+  category_name?: string;
+}
+
 class ProductsController {
   // Listagem dos produtos cadastrados
   public async index(request: Request, response: Response): Promise<Response> {
+    // Recuperando os dados de filtragem na rota
+    const {
+      product_name,
+      min_price,
+      max_price,
+      category_name,
+    } = request.query as IFilters;
+
     // Instanciando e executando o serviço para a listagem dos produtos
     const listProductsService = new ListProductsService();
 
-    const productsList = await listProductsService.execute();
+    const productsList = await listProductsService.execute({
+      product_name,
+      min_price,
+      max_price,
+      category_name,
+    });
 
     // Retornando a listagem dos produtos
     return response.json(productsList);
