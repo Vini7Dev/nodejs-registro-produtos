@@ -7,9 +7,11 @@ class ProductsRepository {
   private repository: Repository<Product>;
 
   constructor() {
+    // Instanciando o repositório dos produtos
     this.repository = getRepository(Product);
   }
 
+  // Buscando um produto pelo seu id
   public async findById(id: string): Promise<Product> {
     const productsList = await this.repository.findOne(id, {
       relations: ['user', 'category', 'product_images'],
@@ -18,6 +20,7 @@ class ProductsRepository {
     return productsList;
   }
 
+  // Listando os produtos
   public async list(): Promise<Product[]> {
     const productsList = await this.repository.find({
       relations: ['user', 'category', 'product_images'],
@@ -26,6 +29,7 @@ class ProductsRepository {
     return productsList;
   }
 
+  // Cadastrando um novo produto
   public async create({
     name,
     description,
@@ -46,6 +50,7 @@ class ProductsRepository {
     return createdProduct;
   }
 
+  // Apagando um produto
   public async delete(id: string): Promise<void> {
     await this.repository.delete(id);
   }

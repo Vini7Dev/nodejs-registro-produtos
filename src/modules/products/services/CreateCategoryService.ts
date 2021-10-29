@@ -7,20 +7,25 @@ interface IRequest {
   description: string;
 }
 
+// Serviço para o cadastro de uma categoria
 class CreateCategoryService {
   private categoriesRepository: CategoriesRepository;
 
   constructor() {
+    // Instanciando o repositório das categorias
     this.categoriesRepository = new CategoriesRepository();
   }
 
   public async execute({ name, description }: IRequest): Promise<Category> {
+    // Verificando se já existe uma categoria cadastrada com este nome
     const categoryWithSameName = await this.categoriesRepository.findByName(name);
 
+    // Caso exista, lançar um error
     if(categoryWithSameName) {
       throw new AppError('This category already exits');
     }
 
+    // Cadastrando a categoria e retornando os seus dados
     const createdCategory = await this.categoriesRepository.create({
       name,
       description,

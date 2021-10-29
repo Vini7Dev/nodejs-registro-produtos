@@ -21,6 +21,7 @@ class User {
   created_at: Date;
 
   constructor() {
+    // Gerando um id para a entidade durante o cadastro
     if(!this.id) {
       this.id = uuidv4();
     }

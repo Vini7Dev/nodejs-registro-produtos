@@ -1,3 +1,4 @@
+// Dados necessários para o cadastro de um novo produto
 interface ICreateProductDTO {
   name: string;
   description: string;

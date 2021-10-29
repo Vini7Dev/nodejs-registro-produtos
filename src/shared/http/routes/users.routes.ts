@@ -3,10 +3,13 @@ import { celebrate, Segments, Joi } from 'celebrate';
 
 import UsersController from '../../../modules/users/controllers/UsersController';
 
+// Instanciando o controlador dos usuário
 const usersController = new UsersController();
 
+// Instanciando o objeto de rotas dos usuários
 const usersRoutes = Router();
 
+// Rota pra o cadastro de um novo usuário
 usersRoutes.post(
   '/',
   celebrate({

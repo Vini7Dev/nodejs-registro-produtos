@@ -22,12 +22,14 @@ class ProductImage {
   @CreateDateColumn()
   created_at: Date;
 
+  // Gerando um atributo com a URL de acesso para a imagem
   @Expose({name: 'image_url'})
   public getImageUrl(): string {
     return `http://localhost:3333/files/${this.file_name}`;
   }
 
   constructor() {
+    // Gerando um id para a entidade durante o cadastro
     if(!this.id) {
       this.id = uuidv4();
     }

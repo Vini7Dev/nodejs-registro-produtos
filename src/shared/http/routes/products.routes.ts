@@ -6,22 +6,30 @@ import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 import ProductsController from '../../../modules/products/controllers/ProductsController';
 import uploadConfig from '../../../config/uploadConfig';
 
+// Instanciando o controlador dos produtos
 const productsController = new ProductsController();
 
+// Recuperando o middleware para upload de arquivos
 const uploadProductImages = multer(uploadConfig);
 
+// Instanciando o objeto de rotas dos produtos
 const productsRoutes = Router();
 
+// Implementando o middleware em todas as rotas para garantir que o usuário está autenticado 
 productsRoutes.use(ensureAuthenticated);
 
+// Rota para listagem dos produtos
 productsRoutes.get(
   '/',
   productsController.index,
 );
 
+// Rota para cadastro de um novo produto
 productsRoutes.post(
   '/',
+  // Tratando as imagens recebidas
   uploadProductImages.array('images'),
+  // Validando os dados recebidos
   celebrate({
     [Segments.BODY]: {
       name: Joi.string().required(),
@@ -33,6 +41,7 @@ productsRoutes.post(
   productsController.create,
 );
 
+// Rota para apagar um produto
 productsRoutes.delete(
   '/:id',
   celebrate({
