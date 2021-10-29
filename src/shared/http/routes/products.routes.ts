@@ -21,6 +21,14 @@ productsRoutes.use(ensureAuthenticated);
 // Rota para listagem dos produtos
 productsRoutes.get(
   '/',
+  celebrate({
+    [Segments.QUERY]: {
+      product_name: Joi.string(),
+      min_price: Joi.number().min(0),
+      max_price: Joi.number().min(0),
+      category_name: Joi.string(),
+    },
+  }),
   productsController.index,
 );
 
