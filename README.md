@@ -1,4 +1,4 @@
-
+<img src="readme_images/_banner.PNG" width="100%" />
 
 # **API - Registro de Produtos**
 Aplicação back-end com NodeJS + TypeScript para cadastro de usuários e produtos, com autenticação, upload de arquivos e banco relacional.
@@ -34,15 +34,15 @@ Com o PostgreSQL pronto, crie um banco nomeado de **product-registration**, para
 
 *Criando uma conexão com o Postgres*
 
-<img src="readme_images/creating_database0.png" />
-<br/><br/>
-<img src="readme_images/creating_database1.png" />
-<br/><br/>
+<img src="readme_images/creating_database0.PNG" />
+<br/>
+<img src="readme_images/creating_database1.PNG" />
+<br/>
 *Criando o Banco de Dados da Aplicação*
-<br/><br/>
-<img src="readme_images/creating_database2.png" />
-<br/><br/>
-<img src="readme_images/creating_database3.png" />
+<br/>
+<img src="readme_images/creating_database2.PNG" />
+<br/>
+<img src="readme_images/creating_database3.PNG" />
 
 ### Passo 2: Clonando o Repositório
 
@@ -84,11 +84,11 @@ Com todos os passos anteriores realizados em ordem, basta executar no terminal q
 
 *OBS3: As rotas autenticadas utilizam o Bearer Token, para configurar este token siga os passos abaixo (no Insomnia):*
 
-<img src="readme_images/add_token0.png" />
+<img src="readme_images/add_token0.PNG" />
 <br /><br />
-<img src="readme_images/add_token1.png" />
+<img src="readme_images/add_token1.PNG" />
 <br /><br />
-<img src="readme_images/add_token2.png" />
+<img src="readme_images/add_token2.PNG" />
 
 #### Cadastro de Usuários
 
@@ -99,7 +99,7 @@ Com todos os passos anteriores realizados em ordem, basta executar no terminal q
   - password: string;
 - Retorno: Dados do usuário cadastrado.
 
-<img src="readme_images/users_post.png" />
+<img src="readme_images/users_post.PNG" />
 
 #### Autenticação
 
@@ -109,7 +109,7 @@ Com todos os passos anteriores realizados em ordem, basta executar no terminal q
   - email: string;
 - Retorno: Dados do usuário + token de autenticação.
 
-<img src="readme_images/sections_post.png" />
+<img src="readme_images/sections_post.PNG" />
 
 #### Cadastro de Categorias
 
@@ -120,7 +120,7 @@ Com todos os passos anteriores realizados em ordem, basta executar no terminal q
   - description: string;
 - Retorno: Dados da categoria cadastrada.
 
-<img src="readme_images/categories_post.png" />
+<img src="readme_images/categories_post.PNG" />
 
 #### Cadastro de Produtos
 
@@ -134,7 +134,7 @@ Com todos os passos anteriores realizados em ordem, basta executar no terminal q
   - imagens: Arquivo de imagem (Pode enviar mais de um campo com este nome)
 - Retorno: Dados do produto cadastrada.
 
-<img src="readme_images/products_post.png" />
+<img src="readme_images/products_post.PNG" />
 
 #### Listagem dos Produtos
 
@@ -147,7 +147,7 @@ Com todos os passos anteriores realizados em ordem, basta executar no terminal q
   - category_name?: string;
 - Retorno: Dados dos pedidos cadastrados (com ou sem filtragem).
 
-<img src="readme_images/products_get.png" />
+<img src="readme_images/products_get.PNG" />
 
 #### Apagar um Produto
 
@@ -157,11 +157,11 @@ Com todos os passos anteriores realizados em ordem, basta executar no terminal q
   - id: string (uuid);
 - Retorno: Vazio.
 
-<img src="readme_images/products_delete.png" />
+<img src="readme_images/products_delete.PNG" />
 
 #### Acessar uma Imagem de um Produto
 
 - **GET**: *http://localhost:3333/files/nome_da_imagem_aqui*
 - Retorno: Imagem do Produto.
 
-<img src="./readme_images/product_image_get.png" />
+<img src="./readme_images/product_image_get.PNG" />
