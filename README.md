@@ -34,15 +34,15 @@ Com o PostgreSQL pronto, crie um banco nomeado de **product-registration**, para
 
 *Criando uma conexão com o Postgres*
 
-<img src="readme_images/creating_database0.PNG" />
+<img src="readme_images/creating_database0.png" />
 <br/>
-<img src="readme_images/creating_database1.PNG" />
+<img src="readme_images/creating_database1.png" />
 <br/>
 *Criando o Banco de Dados da Aplicação*
 <br/>
-<img src="readme_images/creating_database2.PNG" />
+<img src="readme_images/creating_database2.png" />
 <br/>
-<img src="readme_images/creating_database3.PNG" />
+<img src="readme_images/creating_database3.png" />
 
 ### Passo 2: Clonando o Repositório
 
@@ -85,9 +85,9 @@ Com todos os passos anteriores realizados em ordem, basta executar no terminal q
 *OBS3: As rotas autenticadas utilizam o Bearer Token, para configurar este token siga os passos abaixo (no Insomnia):*
 
 <img src="readme_images/add_token0.PNG" />
-<br /><br />
+<br />
 <img src="readme_images/add_token1.PNG" />
-<br /><br />
+<br />
 <img src="readme_images/add_token2.PNG" />
 
 #### Cadastro de Usuários
