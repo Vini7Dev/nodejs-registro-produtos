@@ -42,5 +42,5 @@ app.use((error: Error, request: Request, response: Response, next: NextFunction)
 
 // Iniciando o servidor na porta 3333
 app.listen(3333, () => {
-  console.log(`===> Server Started on PORT 3333 <===`);
+  console.log(`===> Server started on PORT 3333 <===`);
 });

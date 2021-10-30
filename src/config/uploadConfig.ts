@@ -5,7 +5,7 @@ import multer from 'multer';
 // Pasta onde armazena as imagens dos produtos
 const tmpFolder = path.resolve(__dirname, '..', '..', 'tmp');
 
-// Configuração para o upload dos arquivos
+// Configuração para o upload de arquivos
 export default {
   tmpFolder,
   storage: multer.diskStorage({
