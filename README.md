@@ -131,7 +131,7 @@ Com todos os passos anteriores realizados em ordem, basta executar no terminal q
   - description: string;
   - price: number;
   - category_id: string (uuid);
-  - imagens: Arquivo de imagem (Pode enviar mais de um campo com este nome)
+  - images: Arquivo de imagem (Pode enviar mais de um campo com este nome)
 - Retorno: Dados do produto cadastrada.
 
 <img src="readme_images/products_post.PNG" />
